@@ -88,7 +88,7 @@ import org.spongepowered.common.event.tracking.CauseTracker;
 import org.spongepowered.common.event.tracking.PhaseContext;
 import org.spongepowered.common.event.tracking.phase.GenerationPhase;
 import org.spongepowered.common.interfaces.world.IMixinWorldServer;
-import org.spongepowered.common.interfaces.world.biome.IBiomeGenBase;
+import org.spongepowered.common.interfaces.world.biome.IMixinBiome;
 import org.spongepowered.common.interfaces.world.gen.IFlaggedPopulator;
 import org.spongepowered.common.interfaces.world.gen.IGenerationPopulator;
 import org.spongepowered.common.util.VecHelper;
@@ -157,7 +157,7 @@ public final class SpongeChunkGeneratorForge extends SpongeChunkGenerator {
         Chunk chunk = (Chunk) this.world.getChunkFromChunkCoords(chunkX, chunkZ);
 
         if (!this.biomeSettings.containsKey(biome)) {
-            this.biomeSettings.put(biome, ((IBiomeGenBase) biome).initPopulators(this.world));
+            this.biomeSettings.put(biome, ((IMixinBiome) biome).initPopulators(this.world));
         }
 
         List<Populator> populators = new ArrayList<>(this.pop);
